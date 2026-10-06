@@ -4,5 +4,7 @@ __pycache__/
 *.pyc
 .pytest_cache/
 *.egg-info/
+# Hermes scratch (plan files) - not part of the lab submission
+.hermes/
 # Tài liệu và mã dành cho giảng viên (đáp án, bản cài đặt tham chiếu, bộ sinh dữ liệu). Chỉ giữ cục bộ.
 instructor/
