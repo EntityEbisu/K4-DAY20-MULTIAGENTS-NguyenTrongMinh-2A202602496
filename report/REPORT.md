@@ -33,16 +33,25 @@
 
 | Tác vụ | Check thất bại | Nhóm lỗi (A-G) | Bằng chứng (trích ngắn từ `detail` hoặc vết) |
 |---|---|---|---|
-| | | | |
+| code-learn | `parse_price_all_formats` | D | `wrong for: ['$1,299.50', '(12.00)', '$1,000,000.00']` — bỏ sót các định dạng giá được kiểm tra. |
+| code-learn | `other_caller_fixed` | C | `to_csv_row returned '<InvalidOperation>'` — sửa parser nhưng caller dùng chung vẫn lỗi. |
+| code-learn | `low_stock_follows_docstring` | A | `low_stock returned ['b', 'A', 'c']` — kết quả trái với quy ước trong docstring. |
+| code-learn | `csv_quoting_follows_docstring` | A | `to_csv_row returned 'Desk, large "oak",10.00,2'` — không tuân theo định dạng CSV trong docstring. |
+| code-learn | `rule_type_hints` | E | `RULE: every public function ... has type annotations ...` — check quy ước Acme. |
+| data-learn | `north_q1_revenue` | B | `FileNotFoundError .../workspace/answer.json`; trace kết thúc sau lỗi `SyntaxError` khi chạy script, không có lần kiểm chứng/sửa tiếp theo. |
+| data-learn | `rule_clean_csv` | E | `RULE: write workspace/clean.csv ...` — check quy ước đầu ra Acme. |
+| logs-learn | `valid_structure` | A | `FileNotFoundError .../workspace/errors.json` — không tạo tệp đầu ra được yêu cầu. |
 
-Nhận xét: nhóm lỗi nào chiếm đa số? Skill có thể phòng ngừa nhóm đó không?
+Nhận xét: thất bại trải trên việc bỏ sót đặc tả và định dạng (A, D), sửa chưa triệt để (C), không kiểm chứng sau lỗi (B), cùng các quy ước tổ chức (E). `check_breakdown.py` ghi nhận chỉ 1/18 check kỹ thuật và 0/9 check quy ước đạt; không có bằng chứng cho thấy kỹ năng tổng quát đã giúp được baseline.
+
 
 ## 5. Điều kiện `subagents` (Phần 2.3)
 
-- Các subagent đã định nghĩa (tên, vai trò, lý do thiết kế):
-- `subagent_calls` ở từng tác vụ và nhận xét (kể cả trường hợp bằng 0):
-- Thông tin thiếu hoặc thừa khi giao việc (nếu có giao việc):
-- Ảnh hưởng đến token và thời gian:
+- Các subagent đã định nghĩa: `explorer` (đọc đề, README, docstring và báo cáo sự thật; không sửa), `implementer` (thực hiện thay đổi đã được đặc tả và tự kiểm tra), `reviewer` (đối chiếu độc lập từng yêu cầu; không sửa).
+- `subagent_calls`: `code-learn=0`, `data-learn=0`, `logs-learn=0`. Trace của cả ba lần chạy không có lệnh gọi `task`; đây là kết quả hợp lệ. Tác tử chính đã làm trực tiếp, nên không có báo cáo subagent để đánh giá.
+- Thông tin khi giao việc: không có giao việc; vì vậy không thể nhận xét về tính đầy đủ của prompt giao việc.
+- Chi phí: baseline trung bình 48,850 token và 65.0 s/run; subagents trung bình 54,749 token và 101.7 s/run (+12.1% token, +56.5% thời gian). Subagent không được gọi, nhưng chế độ vẫn tốn hơn, nhất là do độ dài các lần chạy.
+
 
 ## 6. Self-evolving: skill do curator sinh (Phần 3)
 
