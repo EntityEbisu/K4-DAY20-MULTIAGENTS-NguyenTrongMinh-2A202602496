@@ -1,0 +1,64 @@
+{
+  "task": "data-learn",
+  "condition": "skills-auto",
+  "role": "learn",
+  "error": "GraphRecursionError: Recursion limit of 40 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langgraph/errors/GRAPH_RECURSION_LIMIT",
+  "timestamp": "2026-10-06T11:53:22.422822+00:00",
+  "skills_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "seconds": 195.5,
+  "tokens": {
+    "input": 97547,
+    "output": 2549,
+    "total": 100096
+  },
+  "tool_calls": 19,
+  "subagent_calls": 0,
+  "skills_read": 0,
+  "skills_modified": false,
+  "final_message": "/workspace/sales.csv:\n  8: S-1002,20/06/2024, South,-999\n  9: S-1076,2024-03-20, South,346.27\n  10: S-1032,2024-01-07T23:15:00-05:00,South,637.30\n  19: S-1079,14/03/2024, South,384.80\n  27: S-1041,07/06/2024, South,142.31\n  56: S-1067,29/05/2024, South,-999\n  63: S-1027,2024-04-07, South,764.96\n  65: S-1046,2024-06-24, South,237.68\n  67: S-1021,2024-02-17, South,784.21\n  71: S-1078,2024-03-13,South,297.76\n  73: S-1038,2024-06-20,South,119.37\n  74: S-1049,2024-06-24T19:15:00+07:00,South,50.60\n  79: S-1052,2024-05-03T22:30:00-05:00,South,808.27\n  82: S-1061,2024-04-07T06:30:00+00:00,South,279.33\n  83: S-1089,2024-05-26T17:30:00+00:00, South,108.06\n  90: S-1044,2024-02-06T19:30:00+00:00, South,839.02\n  91: S-1021,2024-02-17, South,784.21\n  102: S-1007,11/03/2024, South,893.18",
+  "score": 0.0,
+  "passed": 0,
+  "total": 8,
+  "checks": [
+    {
+      "name": "north_q1_revenue",
+      "passed": false,
+      "detail": "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/lab-skills-auto-data-learn-ilg_gzhb/workspace/answer.json'"
+    },
+    {
+      "name": "north_q1_orders",
+      "passed": false,
+      "detail": "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/lab-skills-auto-data-learn-ilg_gzhb/workspace/answer.json'"
+    },
+    {
+      "name": "top_region",
+      "passed": false,
+      "detail": "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/lab-skills-auto-data-learn-ilg_gzhb/workspace/answer.json'"
+    },
+    {
+      "name": "missing_amount_orders",
+      "passed": false,
+      "detail": "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/lab-skills-auto-data-learn-ilg_gzhb/workspace/answer.json'"
+    },
+    {
+      "name": "duplicate_rows_removed",
+      "passed": false,
+      "detail": "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/lab-skills-auto-data-learn-ilg_gzhb/workspace/answer.json'"
+    },
+    {
+      "name": "rule_money_in_cents",
+      "passed": false,
+      "detail": "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/lab-skills-auto-data-learn-ilg_gzhb/workspace/answer.json'"
+    },
+    {
+      "name": "rule_meta_block",
+      "passed": false,
+      "detail": "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/lab-skills-auto-data-learn-ilg_gzhb/workspace/answer.json'"
+    },
+    {
+      "name": "rule_clean_csv",
+      "passed": false,
+      "detail": "RULE: write workspace/clean.csv with the header order_id,timestamp_utc,region,amount_cents; one row per distinct order with a known amount; timestamp_utc as YYYY-MM-DDTHH:MM:SSZ (UTC); region in canonical spelling (North, South, East, West); amount in integer cents."
+    }
+  ]
+}

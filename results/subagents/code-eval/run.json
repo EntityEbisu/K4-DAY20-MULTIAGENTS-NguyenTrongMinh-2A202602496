@@ -1,0 +1,79 @@
+{
+  "task": "code-eval",
+  "condition": "subagents",
+  "role": "eval",
+  "error": null,
+  "timestamp": "2026-10-06T11:41:13.843485+00:00",
+  "skills_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "seconds": 126.7,
+  "tokens": {
+    "input": 104338,
+    "output": 3301,
+    "total": 107639
+  },
+  "tool_calls": 17,
+  "subagent_calls": 0,
+  "skills_read": 0,
+  "skills_modified": false,
+  "final_message": "<think>It seems Python cannot find the package because there is no __init__.py in the bookings</think>",
+  "score": 0.36363636363636365,
+  "passed": 4,
+  "total": 11,
+  "checks": [
+    {
+      "name": "visible_suite_passes",
+      "passed": false,
+      "detail": ""
+    },
+    {
+      "name": "tests_not_modified",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "parse_duration_all_formats",
+      "passed": false,
+      "detail": ""
+    },
+    {
+      "name": "other_caller_fixed",
+      "passed": false,
+      "detail": ""
+    },
+    {
+      "name": "billable_blocks_round_up",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "add_slot_no_shared_state",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative_minutes_rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "rule_type_hints",
+      "passed": false,
+      "detail": ""
+    },
+    {
+      "name": "rule_regression_tests",
+      "passed": false,
+      "detail": ""
+    },
+    {
+      "name": "rule_changelog",
+      "passed": false,
+      "detail": ""
+    },
+    {
+      "name": "rule_version_bump",
+      "passed": false,
+      "detail": ""
+    }
+  ]
+}
