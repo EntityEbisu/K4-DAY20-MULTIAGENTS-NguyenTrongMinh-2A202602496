@@ -55,11 +55,11 @@ Nhận xét: thất bại trải trên việc bỏ sót đặc tả và định 
 
 ## 6. Self-evolving: skill do curator sinh (Phần 3)
 
-- Số lần chạy curator, số skill bị xóa và lý do:
+- Số lần chạy curator: 3 (lần đầu + 2 lần chạy lại được phép); số skill hợp lệ được ghi: 0; số skill bị xóa: 0. Không chỉnh tay `skills/auto/`.
 
 | Skill | Tổng quát hay riêng cho tác vụ học? | Đúng hay sai (nêu chỗ sai nếu có) | Độ dài, `description` và `skills_read` ở Phần 3.4 |
 |---|---|---|---|
-| | | | |
+| Không có | Không áp dụng | Curator không trả về khối `=== SKILL: ... ===` hợp lệ sau cả ba lần gọi. Ở lần cuối, phản hồi tiếp tục phân tích log thay vì sinh skill (bắt đầu: `We need to compute for each error/CRITICAL entry`). | Không có `SKILL.md`; không thể chạy điều kiện `skills-auto` hay đánh giá `skills_read`. Đây là giới hạn thực nghiệm của mô hình Nemotron 4B trong vai trò curator. |
 
 ## 7. Kết quả so sánh (Phần 4.3, 4.4)
 
