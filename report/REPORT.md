@@ -15,11 +15,10 @@
 
 ## 2. Giả thuyết (commit TRƯỚC tag `freeze`, Phần 4.0)
 
-> Dự đoán điều kiện nào đạt điểm cao nhất trên **tác vụ đánh giá** và vì sao. Nêu căn cứ từ phân loại lỗi (mục 4) và từ tài liệu tham khảo. Điền cả ba dòng; `verify_freeze.py` kiểm tra điều này.
+- H1 (subagents so với baseline): Trên tập đánh giá, `subagents` dự kiến không cải thiện điểm so với `baseline`, và có thể giảm hiệu quả điểm/token. Ở tác vụ học, mô hình không gọi `task` lần nào trong ba lần chạy; trung bình tốn thêm 12.1% token và 56.5% thời gian mà không có subagent thực sự tham gia.
+- H2 (skills-auto so với baseline): Với cấu hình thực tế này, dự kiến `skills-auto` không cải thiện điểm: curator đã được gọi ba lần nhưng không sinh skill hợp lệ, nên thư mục skill rỗng; bản thân thêm ghi chú/nạp skill có thể còn làm đầy cửa sổ ngữ cảnh 8K. SkillsBench báo lợi ích trung bình cho skill được biên soạn và kiểm soát (33.9% lên 50.5%, +16.6 điểm phần trăm), nhưng đó không phải bằng chứng cho skill tự sinh.[1] SkillEvolBench báo các agent hiện thường không hình thành được skill bền vững và lợi ích trên acquisition không ổn định khi triển khai trên task đã đóng băng.[2]
+- H3 (tác vụ học so với tác vụ đánh giá): Điểm trên `eval` dự kiến không cao hơn `learn`, vì mỗi task đánh giá giữ lại loại công việc nhưng bổ sung một quy ước tổ chức mới không có trong task học (GUIDE §2.2); đồng thời baseline hiện chưa hoàn thành được đầu ra kỹ thuật cơ bản.
 
-- H1 (subagents so với baseline):
-- H2 (skills-auto so với baseline):
-- H3 (tác vụ học so với tác vụ đánh giá):
 
 ## 3. Làm quen Deep Agents (Phần 0.3)
 
@@ -97,3 +96,8 @@ Nhận xét: thất bại trải trên việc bỏ sót đặc tả và định 
 - Lệnh đã chạy (theo thứ tự):
 - Thử thách mở rộng (nếu có): hướng chọn, kết quả, nhận xét.
 - Ghi chú khác:
+
+## Sources
+
+[1] https://arxiv.org/abs/2602.12670
+[2] https://arxiv.org/abs/2605.24117
