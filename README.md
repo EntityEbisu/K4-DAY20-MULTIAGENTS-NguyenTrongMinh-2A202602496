@@ -106,3 +106,9 @@ Nộp qua kho mã nguồn (git), gồm:
 4. `report/REPORT.md` và `report/table.md`.
 
 Thang điểm chi tiết: xem `RUBRIC.md`.
+
+## Local inference note
+
+This group runs the lab's chat model locally through LM Studio's OpenAI-compatible Local Server to avoid metered cloud-inference charges during repeated experiment runs. The selected model is `nvidia/nemotron-3-nano-4b`; configure `.env` with `AZURE_OPENAI_ENDPOINT=http://host.docker.internal:1234/v1`, the LM Studio server key, and `AZURE_OPENAI_DEPLOYMENT_MODEL=nvidia/nemotron-3-nano-4b`. Keep `.env` uncommitted.
+
+The model is served by LM Studio on the host; the lab's Docker container reaches it through `host.docker.internal`. The optional `tools/lmstudio_shim.py` was created during an earlier Ternary-Bonsai trial. The Nemotron run uses LM Studio directly and does not rely on the shim. Report the exact model, context length, temperature, and any observed tool-call behavior in `report/REPORT.md`.

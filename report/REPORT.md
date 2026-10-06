@@ -8,8 +8,8 @@
 |---|---|---|
 | | | |
 
-- Mô hình (tên deployment hoặc `LAB_MODEL`), nhiệt độ (`LAB_TEMPERATURE`), `recursion_limit`:
-- Phiên bản Deep Agents (`pip show deepagents`), hệ điều hành, chạy trực tiếp hay trong Docker:
+- Mô hình: `nvidia/nemotron-3-nano-4b` qua LM Studio Local Server (`http://host.docker.internal:1234/v1`); `LAB_TEMPERATURE=0`, context length 8192, `recursion_limit=40`.
+- Phiên bản Deep Agents: `0.7.21`; máy chủ: Windows 11; agent chạy trong Docker Linux với Python 3.12.
 - Số lần chạy tác vụ đã dùng / ngân sách:
 - Commit của tag `freeze`:
 
@@ -23,9 +23,9 @@
 
 ## 3. Làm quen Deep Agents (Phần 0.3)
 
-1.
-2.
-3.
+1. Mô hình mặc định thấy các công cụ tệp `ls`, `read_file`, `write_file`, `edit_file`, `delete`, `glob`, `grep`; công cụ chạy lệnh là `execute`; công cụ giao việc cho subagent là `task`.
+2. Subagent `general-purpose` có toàn bộ công cụ như tác tử chính. Mỗi lần gọi mặc định stateless; subagent chỉ thấy prompt được giao và trả về một báo cáo cuối.
+3. System prompt mặc định rỗng (`''`). Mô tả `task`: “Each invocation is stateless by default: the agent sees only the prompt you give it and returns a single final report.” Mô tả `execute`: “You MUST avoid using search commands like find and grep. Instead use the grep, glob tools to search.”
 
 ## 4. Đường cơ sở và phân loại lỗi (Phần 2.2)
 
