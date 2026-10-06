@@ -98,16 +98,21 @@ def run_task(task_id: str, condition: str, results_dir="results", model=None, re
         )
         usage = UsageMetadataCallbackHandler()      # cộng token của MỌI lần gọi, kể cả subagent
         t0 = time.time()
+        messages: list = []
         try:
-            result = agent.invoke(
+            # stream() giữ trạng thái cuối cùng khi lỗi, nên vết không bị mất khi
+            # GraphRecursionError xảy ra (xem guides/pseudocode/03_runner.md, ghi chú 8).
+            for state in agent.stream(
                 {"messages": [{"role": "user", "content": task.instruction}]},
                 config={"callbacks": [usage], "recursion_limit": recursion_limit},
-            )
-            messages = list(result["messages"])
+                stream_mode="values",
+            ):
+                if isinstance(state, dict) and state.get("messages"):
+                    messages = list(state["messages"])
             final = str(messages[-1].content) if messages else ""
         except Exception as exc:  # noqa: BLE001 - lỗi là dữ liệu, không phải crash
             record["error"] = f"{type(exc).__name__}: {exc}"
-            messages, final = [], ""
+            final = str(messages[-1].content) if messages else ""
 
         record["seconds"] = round(time.time() - t0, 1)
 
